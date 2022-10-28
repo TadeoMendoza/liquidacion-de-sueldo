@@ -18,6 +18,9 @@ mostrarvaca.addEventListener('click',() => {
 })
 
 boton.addEventListener('click', () => {
+/*nombre y apellido*/
+var nombre= document.getElementById("nombre").value;
+document.getElementById("empleado").innerHTML= 'Liquidacion de: ' + nombre;
     /*Sueldo bruto*/
     /*Declaracion de variables*/
     var descuentofaltas= 0;
