@@ -7,14 +7,25 @@ seccionvaca.setAttribute("style", "display:none;");
 seccionvaca2.setAttribute("style", "display:none;");
 
 ocultarvaca.addEventListener('click',() => {
+    if(seccionvaca2.classList.contains("esconder")){
+        var diasvaca= 0;
+    
+        var vacacionesremu= 0;
+        document.getElementById('vacacionesremu').innerHTML=vacacionesremu.toFixed(2);
+        document.getElementById('vacaciones').value= 0;
+    }
+    vacacionesremu=0;
     console.log("hola")
     seccionvaca.setAttribute("style", "display:none;");
+    seccionvaca2.classList.add("esconder")
     seccionvaca2.setAttribute("style", "display:none;");
 })
 mostrarvaca.addEventListener('click',() => {
+    vacacionesremu=0
     console.log("hola")
-    seccionvaca.setAttribute("style", "display:block;");
-    seccionvaca2.setAttribute("style", "display:block;");
+    seccionvaca2.classList.remove("esconder")
+    seccionvaca.setAttribute("style", "display:;");
+    seccionvaca2.setAttribute("style", "display:;");
 })
 
 boton.addEventListener('click', () => {
@@ -174,26 +185,29 @@ document.getElementById("empleado").innerHTML= 'Liquidacion de: ' + nombre;
         var sindicatoremu = 0;
         document.getElementById('sindicatoremu').innerHTML= '-'+ sindicatoremu.toFixed(2);
     }
-    /*Declaracion de variables de la jubilacion e insercion al HTML*/
-    var jubilacion= 11*sueldo/100;
-    document.getElementById('jubilacion').innerHTML= '-'+ jubilacion.toFixed(2);
-    /*Declaracion de variables del INNSJP e insercion al HTML*/
-    var INNSJP= 3*sueldo/100;
-    document.getElementById('INNSJP').innerHTML= '-'+ INNSJP;
-    /*Calculamos el total de todos los duescuentos*/
-    var totaldes= parseFloat(obrasocialcuenta) +
-    parseFloat(sindicatoremu) + parseFloat(jubilacion) + parseFloat(INNSJP) + parseFloat(presentismo) 
-    /*Declaramos la variable donde se guarda el suelo neto*/
-    var sueldoneto= parseFloat(totalremu) - parseFloat(totaldes)+ parseFloat(aguinaldo);
-    /*Se agrega los descuentos y el sueldo neto al HTML*/
-    document.getElementById('totaldes').innerHTML= '-' + totaldes.toFixed(2);
-    document.getElementById('neto').innerHTML= sueldoneto.toFixed(2) ;
-    
-
-
-/*VACACIONES*/
+    /*VACACIONES*/
 var vacacionesunidad= document.getElementById("vacaciones").value;
+if(seccionvaca2.classList.contains("esconder")){
+    var diasvaca= 0;
+
+    var vacacionesremu= 0;
+    document.getElementById('vacacionesremu').innerHTML=vacacionesremu.toFixed(2);
+    document.getElementById('vacaciones').innerHTML= 0;
+
+}
 if(document.querySelector('input[id="semanas"]:checked')){
+    if(seccionvaca2.classList.contains("esconder")){
+        var diasvaca= 0;
+    
+        var vacacionesremu= 0;
+        document.getElementById('vacacionesremu').innerHTML=vacacionesremu.toFixed(2);
+        document.getElementById('vacaciones').value= 0;
+    
+    }
+       var diasvaca= 0;
+
+        var vacacionesremu= totalremu/25 * diasvaca;
+        document.getElementById('vacacionesremu').innerHTML=vacacionesremu.toFixed(2);
 
     document.getElementById('vacas').innerHTML= 'Semanas';
     if(vacacionesunidad<4 ){
@@ -243,6 +257,14 @@ if(document.querySelector('input[id="semanas"]:checked')){
 }
 
 if(document.querySelector('input[id="anios"]:checked')){
+if(seccionvaca2.classList.contains("esconder")){
+    var diasvaca= 0;
+
+    var vacacionesremu= 0;
+    document.getElementById('vacacionesremu').innerHTML=vacacionesremu.toFixed(2);
+    document.getElementById('vacaciones').value= 0;
+
+}
     document.getElementById('vacas').innerHTML= 'Años';
     
     
@@ -272,5 +294,23 @@ if(document.querySelector('input[id="anios"]:checked')){
     }
     
 }
+    /*Declaracion de variables de la jubilacion e insercion al HTML*/
+    var jubilacion= 11*sueldo/100;
+    document.getElementById('jubilacion').innerHTML= '-'+ jubilacion.toFixed(2);
+    /*Declaracion de variables del INNSJP e insercion al HTML*/
+    var INNSJP= 3*sueldo/100;
+    document.getElementById('INNSJP').innerHTML= '-'+ INNSJP;
+    /*Calculamos el total de todos los duescuentos*/
+    var totaldes= parseFloat(obrasocialcuenta) +
+    parseFloat(sindicatoremu) + parseFloat(jubilacion) + parseFloat(INNSJP) + parseFloat(presentismo) 
+    /*Declaramos la variable donde se guarda el suelo neto*/
+    var sueldoneto= parseFloat(totalremu) - parseFloat(totaldes)+ parseFloat(aguinaldo)+ parseFloat(vacacionesremu);
+    /*Se agrega los descuentos y el sueldo neto al HTML*/
+    document.getElementById('totaldes').innerHTML= '-' + totaldes.toFixed(2);
+    document.getElementById('neto').innerHTML= sueldoneto.toFixed(2) ;
+    
+
+
+
 
 });
